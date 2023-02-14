@@ -49,6 +49,8 @@ body {
 	grid-auto-flow: row;
 	justify-content: center;
 	gap: 6px;
+
+	margin-bottom: auto;
 }
 
 .icons-container>div {
