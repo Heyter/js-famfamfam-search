@@ -46,7 +46,7 @@ body {
 
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 256px);
-	grid-template-rows: max-content;
+	grid-template-rows: repeat(auto-fill, 24px);
 	grid-auto-flow: row;
 	justify-content: center;
 	gap: 6px;
