@@ -1,5 +1,6 @@
 import './App.css';
-import icon16 from './assets/icon16/';
+import './assets/images/famfamfam/style.css';
+import iconList from './assets/images/famfamfam/icons.json';
 import { Component } from 'react';
 
 const regexSymbols = /[\s_,.-]+/;
@@ -15,24 +16,26 @@ class App extends Component {
 		this.fetchData = this.fetchData.bind(this);
 
 		this.text = '';
-		this.imagePath = window.location.origin + '/src/assets/icon16/';
 
 		this.state = {
 			items: [],
-			page: 0,
+			stopFetch: false,
 		};
 	}
 
 	fetchData(force = false) {
+		if (this.state.stopFetch === true) return;
+
 		const scrollHeight = window.innerHeight + window.scrollY;
 		const offsetHeight = document.documentElement.scrollHeight;
-		const itemsPerPage = Math.round(window.innerHeight / 2 - 20);
+		const itemsPerPage = Math.round(window.innerHeight / 4);
 
 		if (force === true || scrollHeight >= offsetHeight) {
 			const currentPage = Math.ceil(Math.max(1, offsetHeight / window.innerHeight));
 
 			this.setState({
-				items: [...icon16].slice(0, currentPage * itemsPerPage),
+				items: [...iconList].slice(0, currentPage * itemsPerPage),
+				stopFetch: true,
 			});
 		}
 	}
@@ -41,6 +44,10 @@ class App extends Component {
 		this.fetchData();
 		window.addEventListener('scroll', this.fetchData);
 		window.addEventListener('resize', this.fetchData);
+	}
+
+	componentDidUpdate() {
+		this.state.stopFetch = false;
 	}
 
 	onInputSearch(ev) {
@@ -69,8 +76,8 @@ class App extends Component {
 		for (const key in words) regexNew += '[-|_]' + words[key];
 		regexNew = new RegExp(regexNew, 'i');
 
-		for (const key in icon16) {
-			const value = icon16[key];
+		for (const key in iconList) {
+			const value = iconList[key];
 
 			if (filter[value]) continue;
 
@@ -117,7 +124,8 @@ class App extends Component {
 					<div className="icons-container" onClick={this.onClickIcon}>
 						{this.state.items.map((value, idx) => (
 							<div key={value} title={value}>
-								<img src={this.imagePath + value} width="20" height="20" />
+								<div className={'icon ' + value}></div>
+								<span>{value}</span>
 							</div>
 						))}
 					</div>
