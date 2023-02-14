@@ -4,7 +4,7 @@ body {
 }
 
 body {
-	background-color: #6a6a6a;
+	background-color: #09203f;
 }
 
 .container {
@@ -41,7 +41,6 @@ body {
 
 .icons-container {
 	grid-area: icons-container;
-	background-color: #09203f;
 	padding: 8px;
 
 	display: grid;
