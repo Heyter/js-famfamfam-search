@@ -25,6 +25,7 @@ class App extends Component {
 
 	fetchData(force = false) {
 		if (this.state.stopFetch === true) return;
+		if (this.text && this.text.length > 0) return;
 
 		const scrollHeight = window.innerHeight + window.scrollY;
 		const offsetHeight = document.documentElement.scrollHeight;

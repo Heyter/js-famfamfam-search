@@ -21,6 +21,9 @@ body {
 }
 
 .search-container {
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+
 	background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
 	padding: 8px;
 
@@ -40,6 +43,9 @@ body {
 }
 
 .icons-container {
+	-ms-grid-row: 2;
+	-ms-grid-column: 1;
+
 	grid-area: icons-container;
 	padding: 8px;
 
