@@ -3,7 +3,7 @@
 .icon {
 	width: 16px;
 	height: 16px;
-	background: url('sprite.png');
+	background: url('sprite-compress.png');
 }
 
 .icon.accept {
